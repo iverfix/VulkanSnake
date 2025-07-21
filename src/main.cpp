@@ -21,7 +21,6 @@ public:
 
 private:
         void initWindow() {
-
             glfwInit();
             glfwWindowHint(GLFW_CLIENT_API, GLFW_NO_API);
             glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
@@ -35,7 +34,6 @@ private:
         }
 
         void mainLoop() {
-
             while(!glfwWindowShouldClose(window)){
                 glfwPollEvents();
             }
@@ -57,7 +55,7 @@ private:
             createInfo.pApplicationInfo = &appInfo;
             
             uint32_t glfwExtensionCount = 0;
-            const char** glfwExtensions;
+            const char** glfwExtensions{};
             
             glfwExtensions =  glfwGetRequiredInstanceExtensions(&glfwExtensionCount);
             
@@ -84,13 +82,13 @@ private:
 
 int main() {
 
-    HelloTriangleApplication app;
+    HelloTriangleApplication app{};
 
 
     try {
         app.run();
     } catch(const std::exception& e) {
-        std::cerr << e.what() << std::endl;
+        std::cerr << e.what() << "\n";
         return EXIT_FAILURE;
     }
 
